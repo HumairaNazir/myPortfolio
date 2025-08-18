@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:html' as html;
+import 'package:portfolio/reuseable_widgets/about_section_widget.dart';
+import 'package:portfolio/reuseable_widgets/contact_section_widget.dart';
+import 'package:portfolio/reuseable_widgets/cv_download_button.dart';
+import 'package:portfolio/reuseable_widgets/hero_section_widget.dart';
+
 import '../reuseable_widgets/portfolio_card_widget.dart';
 
 class PortfolioScreen extends StatefulWidget {
@@ -15,7 +18,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final scrollController = ScrollController();
-  final List<GlobalKey> navbarKeys = List.generate(4, (index) => GlobalKey());
+  final List<GlobalKey> navbarKeys = List.generate(5, (index) => GlobalKey());
 
   void onNavMenuTap(int index) {
     final keyContext = navbarKeys[index].currentContext;
@@ -60,6 +63,12 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
             onPressed: () {
               onNavMenuTap(3);
             },
+            child: const Text('CV', style: TextStyle(color: Colors.amber)),
+          ),
+          TextButton(
+            onPressed: () {
+              onNavMenuTap(4);
+            },
             child: const Text('Contact', style: TextStyle(color: Colors.amber)),
           ),
         ],
@@ -70,106 +79,13 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         child: Column(
           children: [
             // Hero Banner
-            Container(
-              key: navbarKeys.first,
-              height: MediaQuery.of(context).size.height * 0.9,
-              color: Colors.black,
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const CircleAvatar(
-                            radius: 60,
-                            backgroundImage: AssetImage(
-                              'assets/images/profile.png',
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          Text(
-                            'Humaira Nazir',
-                            style: GoogleFonts.poppins(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.amber,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'Flutter Developer | 2 Years Experience',
-                            style: GoogleFonts.poppins(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                icon: const Icon(Icons.linked_camera,
-                                    color: Colors.white),
-                                onPressed: () => _launchURL(
-                                    'https://www.linkedin.com/in/your-profile'),
-                              ),
-                              IconButton(
-                                icon:
-                                    const Icon(Icons.code, color: Colors.white),
-                                onPressed: () => _launchURL(
-                                    'https://github.com/your-github'),
-                              ),
-                              IconButton(
-                                icon:
-                                    const Icon(Icons.mail, color: Colors.white),
-                                onPressed: () =>
-                                    _launchURL('mailto:humaira.dev@gmail.com'),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/logo.png',
-                            height: 150,
-                            fit: BoxFit.contain,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
 
+            HeroSectionWidget(
+              key: navbarKeys.first,
+            ),
             // About Section (light background)
-            Container(
+            AboutSectionWidget(
               key: navbarKeys[1],
-              color: Colors.black54,
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('About Me',
-                      style: GoogleFonts.poppins(
-                          color: Colors.amber,
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 10),
-                  Text(
-                    'I am Humaira Nazir, a dedicated Flutter developer with 2 years of experience building high-performance mobile apps. I am passionate about writing clean code, exploring new technologies, and delivering outstanding user experiences.',
-                    style: GoogleFonts.poppins(fontSize: 18),
-                  ),
-                ],
-              ),
             ),
 
             // Portfolio Section with Mustard Cards
@@ -270,48 +186,15 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                 )),
 
             // Contact Section
-            Container(
-              key: navbarKeys[3],
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Contact',
-                      style: GoogleFonts.poppins(
-                          color: Colors.amber,
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 10),
-                  Text(
-                    'Feel free to reach out via email or LinkedIn. I’m always open to freelance projects and collaborations!',
-                    style: GoogleFonts.poppins(fontSize: 18),
-                  ),
-                ],
-              ),
+            ContactSectionWidget(
+              key: navbarKeys[4],
             ),
             SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber,
-                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12))),
-                onPressed: () {
-                  const url = 'assets/Humaira_cv.pdf';
-
-                  html.AnchorElement(href: url)
-                    ..setAttribute("download", "Humaira_cv.pdf")
-                    ..click();
-                },
-                child: Text(
-                  "⬇ Download CV",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
-                )),
+            CvDownloadButton(
+              key: navbarKeys[3],
+            ),
             SizedBox(
               height: 20,
             ),
@@ -319,14 +202,6 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         ),
       ),
     );
-  }
-
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }
 
