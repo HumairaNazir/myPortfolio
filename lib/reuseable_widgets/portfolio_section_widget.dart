@@ -21,10 +21,11 @@ class PortfolioSectionWidget extends StatelessWidget {
                 runSpacing: 20,
                 children: projects.map((project) {
                   return ProjectCard(
-                    images:
-                        List<String>.from(project['images']), // ✅ fixed here
+                    images: List<String>.from(project['images']),
                     title: project['title'],
                     description: project['description'],
+                    githubUrl: project['githubUrl'],
+                    apkUrl: project['apkUrl'],
                   );
                 }).toList(),
               ),
@@ -36,7 +37,6 @@ class PortfolioSectionWidget extends StatelessWidget {
   }
 }
 
-// List of projects
 final List<Map<String, dynamic>> projects = [
   {
     'images': [
@@ -51,6 +51,8 @@ final List<Map<String, dynamic>> projects = [
     ],
     'title': 'Weather App',
     'description': 'Built with MVC architecture and REST API integration.',
+    'githubUrl': 'https://github.com/yourusername/weather_app',
+    'apkUrl': 'https://yourwebsite.com/weather_app.apk',
   },
   {
     'images': [
@@ -60,6 +62,8 @@ final List<Map<String, dynamic>> projects = [
     ],
     'title': 'Chat App',
     'description': 'Firebase-based app using Provider for state management.',
+    'githubUrl': 'https://github.com/yourusername/chat_app',
+    'apkUrl': 'https://yourwebsite.com/chat_app.apk',
   },
   {
     'images': [
@@ -69,6 +73,8 @@ final List<Map<String, dynamic>> projects = [
     ],
     'title': 'Recipe App',
     'description': 'Built with Firebase and Provider.',
+    'githubUrl': 'https://github.com/yourusername/recipe_app',
+    'apkUrl': 'https://yourwebsite.com/recipe_app.apk',
   },
   {
     'images': [
@@ -78,5 +84,7 @@ final List<Map<String, dynamic>> projects = [
     ],
     'title': 'E-commerce App',
     'description': 'Built with Flutter and Stripe payment integration.',
+    'githubUrl': 'https://github.com/yourusername/ecommerce_app',
+    'apkUrl': 'https://yourwebsite.com/ecommerce_app.apk',
   },
 ];

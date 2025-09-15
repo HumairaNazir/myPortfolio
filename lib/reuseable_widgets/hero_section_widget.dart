@@ -29,7 +29,7 @@ class HeroSectionWidget extends StatelessWidget {
                   ],
                 );
               } else {
-                // 💻 Desktop → Row layout
+                // 💻 Desktop  Row layout
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,

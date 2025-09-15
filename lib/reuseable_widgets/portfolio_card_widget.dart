@@ -1,16 +1,23 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectCard extends StatefulWidget {
   final List<String> images;
   final String title;
   final String description;
+  final String? githubUrl;
+  final String? apkUrl;
 
   const ProjectCard({
     super.key,
     required this.images,
     required this.title,
     required this.description,
+    this.githubUrl,
+    this.apkUrl,
   });
 
   @override
@@ -32,16 +39,27 @@ class _ProjectCardState extends State<ProjectCard> {
     );
   }
 
+  Widget _buildImage(String image) {
+    if (image.startsWith("http")) {
+      return Image.network(image, fit: BoxFit.fitWidth);
+    } else {
+      return Image.asset(image, fit: BoxFit.fitWidth);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300, // ✅ keeps card size fixed so Wrap shows in grid
+      width: 300,
       child: Card(
         elevation: 4,
-        margin: const EdgeInsets.all(12),
+        margin: const EdgeInsets.all(8),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // ✅ Carousel with arrows
             Stack(
               alignment: Alignment.center,
               children: [
@@ -67,10 +85,7 @@ class _ProjectCardState extends State<ProjectCard> {
                             alignment: Alignment.topCenter,
                             child: FittedBox(
                               alignment: Alignment.topCenter,
-                              child: Image.asset(
-                                image,
-                                fit: BoxFit.fitWidth,
-                              ),
+                              child: _buildImage(image),
                             ),
                           ),
                         ),
@@ -78,7 +93,6 @@ class _ProjectCardState extends State<ProjectCard> {
                     );
                   },
                 ),
-
                 // Left Arrow
                 Positioned(
                   left: 8,
@@ -90,7 +104,6 @@ class _ProjectCardState extends State<ProjectCard> {
                     onPressed: () => _controller.previousPage(),
                   ),
                 ),
-
                 // Right Arrow
                 Positioned(
                   right: 8,
@@ -104,6 +117,8 @@ class _ProjectCardState extends State<ProjectCard> {
                 ),
               ],
             ),
+
+            // ✅ Title & Description
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
@@ -124,6 +139,34 @@ class _ProjectCardState extends State<ProjectCard> {
                 ],
               ),
             ),
+
+            // ✅ GitHub & APK buttons
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Available on :",
+                    style:
+                        GoogleFonts.poppins(fontSize: 14, color: Colors.amber),
+                  ),
+                  const SizedBox(width: 8),
+                  if (widget.githubUrl != null)
+                    IconButton(
+                      onPressed: () => _launchURL(widget.githubUrl!),
+                      icon: const FaIcon(FontAwesomeIcons.github,
+                          color: Colors.white),
+                    ),
+                  if (widget.apkUrl != null)
+                    IconButton(
+                      onPressed: () => _launchURL(widget.apkUrl!),
+                      icon: const FaIcon(FontAwesomeIcons.download,
+                          color: Colors.greenAccent),
+                    ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -132,7 +175,7 @@ class _ProjectCardState extends State<ProjectCard> {
 }
 
 /// ✅ Fullscreen Carousel Page
-class FullScreenCarousel extends StatefulWidget {
+class FullScreenCarousel extends StatelessWidget {
   final List<String> images;
   final int initialIndex;
 
@@ -142,34 +185,34 @@ class FullScreenCarousel extends StatefulWidget {
     required this.initialIndex,
   });
 
-  @override
-  State<FullScreenCarousel> createState() => _FullScreenCarouselState();
-}
-
-class _FullScreenCarouselState extends State<FullScreenCarousel> {
-  final CarouselSliderController _controller = CarouselSliderController();
+  Widget _buildImage(String image) {
+    if (image.startsWith("http")) {
+      return Image.network(image, fit: BoxFit.contain);
+    } else {
+      return Image.asset(image, fit: BoxFit.contain);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final CarouselSliderController controller = CarouselSliderController();
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         alignment: Alignment.center,
         children: [
           CarouselSlider.builder(
-            itemCount: widget.images.length,
-            carouselController: _controller,
+            itemCount: images.length,
+            carouselController: controller,
             options: CarouselOptions(
               height: double.infinity,
               viewportFraction: 1,
-              initialPage: widget.initialIndex,
+              initialPage: initialIndex,
               enableInfiniteScroll: true,
-              enlargeCenterPage: false,
             ),
             itemBuilder: (context, index, realIndex) {
-              return Center(
-                child: Image.asset(widget.images[index], fit: BoxFit.contain),
-              );
+              return Center(child: _buildImage(images[index]));
             },
           ),
           // Left Arrow
@@ -180,7 +223,7 @@ class _FullScreenCarouselState extends State<FullScreenCarousel> {
             child: IconButton(
               icon: const Icon(Icons.arrow_back_ios,
                   color: Colors.orange, size: 32),
-              onPressed: () => _controller.previousPage(),
+              onPressed: () => controller.previousPage(),
             ),
           ),
           // Right Arrow
@@ -191,10 +234,10 @@ class _FullScreenCarouselState extends State<FullScreenCarousel> {
             child: IconButton(
               icon: const Icon(Icons.arrow_forward_ios,
                   color: Colors.orange, size: 32),
-              onPressed: () => _controller.nextPage(),
+              onPressed: () => controller.nextPage(),
             ),
           ),
-          // Close Button
+          // Close button
           Positioned(
             top: 40,
             right: 20,
@@ -206,5 +249,15 @@ class _FullScreenCarouselState extends State<FullScreenCarousel> {
         ],
       ),
     );
+  }
+}
+
+/// ✅ Helper function
+void _launchURL(String url) async {
+  final Uri uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    throw 'Could not launch $url';
   }
 }
