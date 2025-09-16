@@ -25,7 +25,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
-      // close drawer after navigation (on mobile)
+
       Navigator.pop(context);
     }
   }
@@ -39,40 +39,40 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title:
-            const Text('My Portfolio', style: TextStyle(color: Colors.amber)),
+            const Text('My Portfolio', style: TextStyle(color: Colors.orange)),
         actions: isDesktop
             ? [
                 // ✅ Desktop/Tablet menu
                 TextButton(
                   onPressed: () => onNavMenuTap(0),
-                  child:
-                      const Text('Home', style: TextStyle(color: Colors.amber)),
+                  child: const Text('Home',
+                      style: TextStyle(color: Colors.orange)),
                 ),
                 TextButton(
                   onPressed: () => onNavMenuTap(1),
                   child: const Text('About',
-                      style: TextStyle(color: Colors.amber)),
+                      style: TextStyle(color: Colors.orange)),
                 ),
                 TextButton(
                   onPressed: () => onNavMenuTap(2),
                   child: const Text('Portfolio',
-                      style: TextStyle(color: Colors.amber)),
+                      style: TextStyle(color: Colors.orange)),
                 ),
                 TextButton(
                   onPressed: () => onNavMenuTap(3),
                   child:
-                      const Text('CV', style: TextStyle(color: Colors.amber)),
+                      const Text('CV', style: TextStyle(color: Colors.orange)),
                 ),
                 TextButton(
                   onPressed: () => onNavMenuTap(4),
                   child: const Text('Contact',
-                      style: TextStyle(color: Colors.amber)),
+                      style: TextStyle(color: Colors.orange)),
                 ),
               ]
             : [
                 // ✅ Mobile hamburger menu only
                 IconButton(
-                  icon: const Icon(Icons.menu, color: Colors.amber),
+                  icon: const Icon(Icons.menu, color: Colors.orange),
                   onPressed: () {
                     scaffoldKey.currentState
                         ?.openEndDrawer(); // open RIGHT SIDE drawer
@@ -89,7 +89,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                 padding: EdgeInsets.zero,
                 children: [
                   const DrawerHeader(
-                    decoration: BoxDecoration(color: Colors.amber),
+                    decoration: BoxDecoration(color: Colors.orange),
                     child: Text(
                       "Humaira's Portfolio",
                       style: TextStyle(color: Colors.black, fontSize: 24),

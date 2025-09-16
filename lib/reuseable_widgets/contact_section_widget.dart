@@ -13,7 +13,7 @@ class ContactSectionWidget extends StatelessWidget {
         children: [
           Text('Contact',
               style: GoogleFonts.poppins(
-                  color: Colors.amber,
+                  color: Colors.orange,
                   fontSize: 28,
                   fontWeight: FontWeight.bold)),
           const SizedBox(height: 10),

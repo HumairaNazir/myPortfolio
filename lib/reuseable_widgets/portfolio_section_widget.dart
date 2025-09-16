@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/reuseable_widgets/portfolio_card_widget.dart';
 
 class PortfolioSectionWidget extends StatelessWidget {
@@ -6,33 +7,33 @@ class PortfolioSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black54,
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 20),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Wrap(
-                spacing: 20,
-                runSpacing: 20,
-                children: projects.map((project) {
-                  return ProjectCard(
-                    images: List<String>.from(project['images']),
-                    title: project['title'],
-                    description: project['description'],
-                    githubUrl: project['githubUrl'],
-                    apkUrl: project['apkUrl'],
-                  );
-                }).toList(),
-              ),
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('My Projects',
+            style: GoogleFonts.poppins(
+                color: Colors.orange,
+                fontSize: 28,
+                fontWeight: FontWeight.bold)),
+        const SizedBox(height: 20),
+        Container(
+          color: Colors.black54,
+          padding: const EdgeInsets.all(16), // <-- give inside space too
+          child: Wrap(
+            spacing: 20,
+            runSpacing: 20,
+            children: projects.map((project) {
+              return ProjectCard(
+                images: List<String>.from(project['images']),
+                title: project['title'],
+                description: project['description'],
+                githubUrl: project['githubUrl'],
+                apkUrl: project['apkUrl'],
+              );
+            }).toList(),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

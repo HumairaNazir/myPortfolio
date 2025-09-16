@@ -61,7 +61,7 @@ class HeroSectionWidget extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 40,
             fontWeight: FontWeight.bold,
-            color: Colors.amber,
+            color: Colors.orange,
           ),
         ),
         const SizedBox(height: 10),
