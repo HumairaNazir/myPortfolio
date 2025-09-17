@@ -26,7 +26,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         curve: Curves.easeInOut,
       );
 
-      Navigator.pop(context);
+      // ✅ Close drawer only if it's open (prevents web crash)
+      if (scaffoldKey.currentState?.isEndDrawerOpen ?? false) {
+        Navigator.pop(context);
+      }
     }
   }
 
@@ -80,6 +83,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                 ),
               ],
       ),
+
       // ✅ Show Drawer only for mobile
       endDrawer: isDesktop
           ? null
@@ -123,16 +127,18 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                 ],
               ),
             ),
+
+      // ✅ Body with correct order of sections & keys
       body: SingleChildScrollView(
         controller: scrollController,
         child: Column(
           children: [
-            HeroSectionWidget(key: navbarKeys.first),
-            AboutSectionWidget(key: navbarKeys[1]),
-            PortfolioSectionWidget(key: navbarKeys[2]),
-            ContactSectionWidget(key: navbarKeys[4]),
+            HeroSectionWidget(key: navbarKeys[0]), // Home
+            AboutSectionWidget(key: navbarKeys[1]), // About
+            PortfolioSectionWidget(key: navbarKeys[2]), // Portfolio
+            CvDownloadButton(key: navbarKeys[3]), // CV
             const SizedBox(height: 20),
-            CvDownloadButton(key: navbarKeys[3]),
+            ContactSectionWidget(key: navbarKeys[4]), // Contact
             const SizedBox(height: 20),
           ],
         ),
