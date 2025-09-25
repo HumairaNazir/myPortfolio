@@ -53,7 +53,8 @@ final List<Map<String, dynamic>> projects = [
     'title': 'Weather App',
     'description': 'Built with MVC architecture and REST API integration.',
     'githubUrl': 'https://github.com/yourusername/weather_app',
-    'apkUrl': 'https://yourwebsite.com/weather_app.apk',
+    'apkUrl':
+        'https://drive.google.com/uc?export=download&id=1mr6onO3sxEHuV5zto_Ykw_J9cp-wYX1S',
   },
   {
     'images': [
