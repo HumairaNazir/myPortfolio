@@ -52,9 +52,9 @@ final List<Map<String, dynamic>> projects = [
     ],
     'title': 'Weather App',
     'description': 'Built with MVC architecture and REST API integration.',
-    'githubUrl': 'https://github.com/yourusername/weather_app',
+    'githubUrl': 'https://github.com/HumairaNazir/final_thermometer_app',
     'apkUrl':
-        'https://drive.google.com/uc?export=download&id=1mr6onO3sxEHuV5zto_Ykw_J9cp-wYX1S',
+        'https://drive.google.com/file/d/1mr6onO3sxEHuV5zto_Ykw_J9cp-wYX1S/view?usp=sharing',
   },
   {
     'images': [
@@ -71,7 +71,7 @@ final List<Map<String, dynamic>> projects = [
     'title': 'News App',
     'description':
         'Stay updated with the latest headlines! A clean and fast Flutter news app with real-time news, dark mode, and sharing features.',
-    'githubUrl': 'https://github.com/yourusername/chat_app',
+    'githubUrl': 'https://github.com/HumairaNazir/newsapp',
     'apkUrl':
         'https://drive.google.com/file/d/1LRpxIqJDNlopav3551ihqC0UB1x2dPDJ/view?usp=sharing',
   },
