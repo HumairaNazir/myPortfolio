@@ -51,7 +51,8 @@ final List<Map<String, dynamic>> projects = [
       'assets/images/weatherapp_imgs/ther.jpeg',
     ],
     'title': 'Weather App',
-    'description': 'Built with MVC architecture and REST API integration.',
+    'description':
+        'A beautifully designed Weather App built with Flutter that shows live weather updates and a 7-day forecast powered by the OpenWeather API.',
     'githubUrl': 'https://github.com/HumairaNazir/final_thermometer_app',
     'apkUrl':
         'https://drive.google.com/file/d/1mr6onO3sxEHuV5zto_Ykw_J9cp-wYX1S/view?usp=sharing',
