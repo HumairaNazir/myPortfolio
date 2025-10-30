@@ -59,7 +59,6 @@ class _ProjectCardState extends State<ProjectCard> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ✅ Carousel with arrows
             Stack(
               alignment: Alignment.center,
               children: [

@@ -58,14 +58,22 @@ final List<Map<String, dynamic>> projects = [
   },
   {
     'images': [
-      'assets/images/logo.png',
-      'assets/images/logo.png',
-      'assets/images/weatherapp_imgs/home.jpeg',
+      'assets/images/newsapp_images/splash.jpeg',
+      'assets/images/newsapp_images/homee.jpeg',
+      'assets/images/newsapp_images/channels.jpeg',
+      'assets/images/newsapp_images/cate.jpeg',
+      'assets/images/newsapp_images/cate2.jpeg',
+      'assets/images/newsapp_images/search.jpeg',
+      'assets/images/newsapp_images/sidemenu.jpeg',
+      'assets/images/newsapp_images/privacy.jpeg',
+      'assets/images/newsapp_images/share.jpeg',
     ],
-    'title': 'Chat App',
-    'description': 'Firebase-based app using Provider for state management.',
+    'title': 'News App',
+    'description':
+        'Stay updated with the latest headlines! A clean and fast Flutter news app with real-time news, dark mode, and sharing features.',
     'githubUrl': 'https://github.com/yourusername/chat_app',
-    'apkUrl': 'https://yourwebsite.com/chat_app.apk',
+    'apkUrl':
+        'https://drive.google.com/file/d/1LRpxIqJDNlopav3551ihqC0UB1x2dPDJ/view?usp=sharing',
   },
   {
     'images': [
