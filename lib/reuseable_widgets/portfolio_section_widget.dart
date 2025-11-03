@@ -55,7 +55,7 @@ final List<Map<String, dynamic>> projects = [
         'A beautifully designed Weather App built with Flutter that shows live weather updates and a 7-day forecast powered by the OpenWeather API.',
     'githubUrl': 'https://github.com/HumairaNazir/final_thermometer_app',
     'apkUrl':
-        'https://drive.google.com/file/d/1mr6onO3sxEHuV5zto_Ykw_J9cp-wYX1S/view?usp=sharing',
+        'https://drive.google.com/file/d/1LRpxIqJDNlopav3551ihqC0UB1x2dPDJ/view?usp=sharing',
   },
   {
     'images': [
