@@ -69,6 +69,7 @@ flutter:
     - assets/images/
     - assets/images/weatherapp_imgs/
     - assets/images/newsapp_images/
+    - assets/images/quotesapp_images/
 
 
 

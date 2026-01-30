@@ -78,12 +78,18 @@ final List<Map<String, dynamic>> projects = [
   },
   {
     'images': [
-      'assets/images/logo.png',
-      'assets/images/logo.png',
-      'assets/images/profile.png',
+      'assets/images/quotesapp_images/logo.jpeg',
+      'assets/images/quotesapp_images/splash2.jpeg',
+      'assets/images/quotesapp_images/home2.jpeg',
+      'assets/images/quotesapp_images/fav.jpeg',
+      'assets/images/quotesapp_images/menu.jpeg',
+      'assets/images/quotesapp_images/darkmenu.jpeg',
+      'assets/images/quotesapp_images/darkhome.jpeg',
+      'assets/images/quotesapp_images/darkfav.jpeg',
     ],
     'title': 'Quotes app',
-    'description': 'Built with Firebase and Provider.',
+    'description':
+        'Quotes App built with Flutter and Provider. Browse, save, and share your favorite quotes easily.',
     'githubUrl': 'https://github.com/HumairaNazir/quotes-app-',
     'apkUrl':
         '"https://github.com/HumairaNazir/quotes-app-/releases/download/v1.0.0/app-release.apk"',
