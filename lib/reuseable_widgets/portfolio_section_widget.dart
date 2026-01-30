@@ -82,10 +82,11 @@ final List<Map<String, dynamic>> projects = [
       'assets/images/logo.png',
       'assets/images/profile.png',
     ],
-    'title': 'Recipe App',
+    'title': 'Quotes app',
     'description': 'Built with Firebase and Provider.',
-    'githubUrl': 'https://github.com/yourusername/recipe_app',
-    'apkUrl': 'https://yourwebsite.com/recipe_app.apk',
+    'githubUrl': 'https://github.com/HumairaNazir/quotes-app-',
+    'apkUrl':
+        '"https://github.com/HumairaNazir/quotes-app-/releases/download/v1.0.0/app-release.apk"',
   },
   {
     'images': [
